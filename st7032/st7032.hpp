@@ -31,11 +31,6 @@
 #ifndef INC_ST7032_HPP_
 #define INC_ST7032_HPP_
 
-/* C++ detection */
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include "stm32f0xx_hal.h"
 
 constexpr uint8_t Write_Address                 = 0x3E; //i2c address
@@ -117,10 +112,5 @@ class St7032{
 inline uint8_t St7032::GetContrast(){
   return contrast_;
 }
-
-/* C++ detection */
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* INC_ST7032_HPP_ */
