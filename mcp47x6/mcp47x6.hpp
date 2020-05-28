@@ -33,6 +33,7 @@
 
 #include "stm32f0xx_hal.h"
 
+constexpr unsigned int MCP47x6_I2C_ADDRESS   = 0x60; //timeout value of I2C transmit API
 constexpr unsigned int MCP47x6_I2C_TIMEOUT   = 1000; //timeout value of I2C transmit API
 
 class Mcp47x6 {
