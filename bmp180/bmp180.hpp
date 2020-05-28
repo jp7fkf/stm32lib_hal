@@ -32,6 +32,7 @@
 #define BMP180_HPP_
 
 #include "stm32f0xx_hal.h"
+#include <math.h>
 
 constexpr uint8_t BMP180_ADDRESS            = 0x77; // I2C Address
 constexpr uint8_t BMP180_RA_AC1_MSB         = 0xAA; // AC1_MSB
@@ -74,10 +75,13 @@ class Bmp180 {
   public:
     Bmp180(I2C_HandleTypeDef hi2cx);
     void Init();
+    bool TestConnection();
     void LoadCalibrationParams();
     uint8_t  GetRegister(uint8_t reg);
-    float GetTemperatureC();
+    float GetTemperatureCelsius();
+    float GetTemperatureFahrenheit();
     float GetPressure(uint8_t oss);
+    float CalcAltitude(float pressure, float seaLevelPressure);
   private:
     I2C_HandleTypeDef hi2cx_;
     bool calibrationLoaded_ = false;
