@@ -30,12 +30,6 @@
 
 #include "bmp180.hpp"
 
-Bmp180::Bmp180(I2C_HandleTypeDef hi2cx){
-  this->hi2cx_ = hi2cx;
-  calibrationLoaded_ = false;
-  this->mode_ = BMP180_MODE_TEMPERATURE;
-}
-
 void Bmp180::Init(){
   this->LoadCalibrationParams();
 }

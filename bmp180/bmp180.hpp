@@ -73,7 +73,10 @@ constexpr unsigned int BMP180_I2C_TIMEOUT   = 1000; //timeout value of I2C trans
 
 class Bmp180 {
   public:
-    Bmp180(I2C_HandleTypeDef hi2cx);
+    Bmp180(I2C_HandleTypeDef hi2cx):
+        hi2cx_(hi2cx),
+        calibrationLoaded_(false),
+        mode_(BMP180_MODE_TEMPERATURE){}
     void Init();
     bool TestConnection();
     void LoadCalibrationParams();
