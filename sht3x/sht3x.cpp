@@ -30,13 +30,9 @@
 
 #include "sht3x.hpp"
 
-Sht3x::Sht3x(I2C_HandleTypeDef hi2cx){
-  this->hi2cx_ = hi2cx;
-}
-
 void Sht3x::GetTempeatureHumiditySingleShot(float *temp, float *humid){
   uint8_t rxbuf[6];
-  uint8_t  settings[] = {0x2C, 0x06};
+  uint8_t settings[] = {0x2C, 0x06};
 
   HAL_I2C_Master_Transmit(&hi2cx_, (0x45<<1)|0x00, settings, 2, SHT_I2C_TIMEOUT);
   HAL_I2C_Master_Receive(&hi2cx_, (0x45<<1)|0x01, rxbuf, 6, SHT_I2C_TIMEOUT);
