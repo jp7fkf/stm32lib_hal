@@ -30,10 +30,6 @@
 
 #include "mcp47x6.hpp"
 
-Mcp47x6::Mcp47x6(I2C_HandleTypeDef hi2cx){
-  this->hi2cx_ = hi2cx;
-}
-
 void Mcp47x6::SetDacOut(uint16_t val) {
   uint8_t buf[2];
   buf[0] = (val >> 8) & 0x0F;
