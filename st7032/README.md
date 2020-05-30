@@ -17,7 +17,10 @@ lcd1.Puts("Hello!");
 
 ## Method List
 ```cpp
+// Constructor
 St7032(I2C_HandleTypeDef hi2cx);
+
+// Public
 void Init();
 void Puts(const char *p);
 void Clear();
@@ -33,6 +36,8 @@ void SetContrast(int val);
 void AdjustContrast(int val);
 uint8_t GetContrast();
 virtual size_t Write(uint8_t chr);
+
+// Protected
 void WriteInstruction(uint8_t cmd);
 void WriteData(uint8_t data);
 ```
