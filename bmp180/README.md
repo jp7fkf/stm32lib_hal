@@ -14,7 +14,7 @@ while(!bmp.TestConnection());
 ```cpp
 bmp.Init();
 ```
-- Put chars
+- Get observation data
 ```cpp
 temperture_c = bmp.GetTemperatureCelsius();
 pressure = bmp.GetPressure(3);
