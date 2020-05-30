@@ -30,10 +30,6 @@
 
 #include "st7032.hpp"
 
-St7032::St7032(I2C_HandleTypeDef hi2cx){
-  this->hi2cx_ = hi2cx;
-}
-
 void St7032::Init(){
   HAL_Delay(100);
   WriteInstruction(FUNCTION_SET | FUNCTION_SET_DL | FUNCTION_SET_N | FUNCTION_SET_IS);
