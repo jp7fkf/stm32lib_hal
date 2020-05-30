@@ -2,7 +2,7 @@
 
 ## Usage
 - Create instance of Hd44780.
-  - Prepare DATA GPIO Port list and Pin list(4bits or 8bit)
+  - Prepare DATA GPIO Port list and Pin list(4bits or 8bits)
   - Make Instance through constructor
 ```cpp
 // The index of array corresponds each Port/Pin
@@ -26,6 +26,7 @@ lcd.Puts("Hello!");
 
 ## Method List
 ```cpp
+// Constructor
 Hd44780(uint8_t mode, GPIO_TypeDef* rsPort, uint16_t rsPin,
     GPIO_TypeDef* rwPort,uint16_t rwPin,
     GPIO_TypeDef* enablePort, uint16_t enablePin,
@@ -40,6 +41,8 @@ Hd44780(uint8_t mode, GPIO_TypeDef* rsPort, uint16_t rsPin,
       dataPorts_(dataPorts),
       dataPins_(dataPins){
 }
+
+// Public
 void Init();
 void SendData(uint8_t data);
 void SendCommand(uint8_t command);
