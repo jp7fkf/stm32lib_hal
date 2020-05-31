@@ -43,10 +43,10 @@ class Sht3x {
   public:
     Sht3x(I2C_HandleTypeDef hi2cx):
       hi2cx_(hi2cx){}
-    void GetTempeatureHumiditySingleShot(float *temp, float *humid);
+    void GetTemperatureHumiditySingleShot(float *temp, float *humid);
   private:
     I2C_HandleTypeDef hi2cx_;
-    float calculateTempeature(uint8_t msb, uint8_t lsb);
+    float calculateTemperature(uint8_t msb, uint8_t lsb);
     float calculateHumidity(uint8_t msb, uint8_t lsb);
 };
 
