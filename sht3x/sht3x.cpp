@@ -38,19 +38,15 @@ void Sht3x::GetTemperatureHumiditySingleShot(float *temp, float *humid){
   HAL_I2C_Master_Receive(&hi2cx_, (0x45<<1)|0x01, rxbuf, 6, SHT_I2C_TIMEOUT);
 
   if (temp != NULL)
-    *temp = this->calculateTemperature(rxbuf[0], rxbuf[1]);
+    *temp = calculateTemperature(rxbuf[0], rxbuf[1]);
   if (humid != NULL)
-    *humid = this->calculateHumidity(rxbuf[3], rxbuf[4]);
+    *humid = calculateHumidity(rxbuf[3], rxbuf[4]);
 }
 
 float Sht3x::calculateTemperature(uint8_t msb, uint8_t lsb){
-  uint16_t val;
-  val = msb << 8 | lsb;
-  return (float)val * 175 / 65535 - 45;
+  return (float)(msb << 8 | lsb) * 175 / 65535 - 45;
 }
 
 float Sht3x::calculateHumidity(uint8_t msb, uint8_t lsb){
-  uint16_t val;
-  val = msb << 8 | lsb;
-  return (float)val / 65535 * 100;
+  return (float)(msb << 8 | lsb) / 65535 * 100;
 }
