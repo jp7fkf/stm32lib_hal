@@ -1,4 +1,4 @@
-# STM32 library for BMP180 Temperture and Pressure sensor
+# STM32 library for BMP180 Temperature and Pressure sensor
 
 ## Usage
 - Create instance of Bmp180
