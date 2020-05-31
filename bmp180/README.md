@@ -22,10 +22,10 @@ pressure = bmp.GetPressure(3);
 
 ## Method List
 ```cpp
-# Constructor
+// Constructor
 Bmp180(I2C_HandleTypeDef hi2cx);
 
-# Public
+// Public
 void     Init();
 bool     TestConnection();
 void     LoadCalibrationParams();
@@ -35,7 +35,7 @@ float    GetTemperatureFahrenheit();
 float    GetPressure(uint8_t oss);
 float    CalcAltitude(float pressure, float seaLevelPressure);
 
-# Private
+// Private
 int16_t  getAC1();
 int16_t  getAC2();
 int16_t  getAC3();

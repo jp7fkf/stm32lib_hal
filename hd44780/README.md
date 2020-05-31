@@ -5,7 +5,7 @@
   - Prepare DATA GPIO Port list and Pin list(4bits or 8bits)
   - Make Instance through constructor
 ```cpp
-// The index of array corresponds each Port/Pin
+// The index of array corresponds each data Port/Pin
 GPIO_TypeDef* dataPorts[] = {GPIOA, GPIOB, GPIOB, GPIOB};
 uint16_t dataPins[] = {GPIO_PIN_15, GPIO_PIN_3, GPIO_PIN_4, GPIO_PIN_5};
 

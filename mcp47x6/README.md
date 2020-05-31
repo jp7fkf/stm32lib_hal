@@ -13,9 +13,9 @@ void SetDacOut(uint16_t val);
 
 ## Method List
 ```cpp
-# Constructor
+// Constructor
 Mcp47x6(I2C_HandleTypeDef hi2cx):
 
-# Public
+// Public
 void SetDacOut(uint16_t val);
 ```

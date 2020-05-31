@@ -15,13 +15,13 @@ printf("temp: %3.2f, humid: %3.2f\r\n", temp, humid);
 
 ## Method List
 ```cpp
-# Constructor
+// Constructor
 Sht3x(I2C_HandleTypeDef hi2cx):
 
-# Public
+// Public
 void GetTemperatureHumiditySingleShot(float *temp, float *humid);
 
-# Private
+// Private
 float calculateTemperature(uint8_t msb, uint8_t lsb);
 float calculateHumidity(uint8_t msb, uint8_t lsb);
 ```
