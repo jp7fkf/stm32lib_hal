@@ -1,4 +1,4 @@
-# STM32 library for SHT3x Temperture and Humidity sensor
+# STM32 library for SHT3x Temperature and Humidity sensor
 
 ## Usage
 - Create instance of Sht3x.
@@ -9,7 +9,7 @@ Sht3x(I2C_HandleTypeDef hi2cx):
 - Get observation data
 ```cpp
 float temp, humid;
-GetTempeatureHumiditySingleShot(&temp, &humid);
+GetTemperatureHumiditySingleShot(&temp, &humid);
 printf("temp: %3.2f, humid: %3.2f\r\n", temp, humid);
 ```
 
@@ -19,9 +19,9 @@ printf("temp: %3.2f, humid: %3.2f\r\n", temp, humid);
 Sht3x(I2C_HandleTypeDef hi2cx):
 
 # Public
-void GetTempeatureHumiditySingleShot(float *temp, float *humid);
+void GetTemperatureHumiditySingleShot(float *temp, float *humid);
 
 # Private
-float calculateTempeature(uint8_t msb, uint8_t lsb);
+float calculateTemperature(uint8_t msb, uint8_t lsb);
 float calculateHumidity(uint8_t msb, uint8_t lsb);
 ```
