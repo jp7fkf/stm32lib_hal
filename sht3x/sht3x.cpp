@@ -34,8 +34,8 @@ void Sht3x::GetTemperatureHumiditySingleShot(float *temp, float *humid){
   uint8_t rxbuf[6];
   uint8_t settings[] = {0x2C, 0x06};
 
-  HAL_I2C_Master_Transmit(&hi2cx_, (0x45<<1)|0x00, settings, 2, SHT_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (0x45<<1)|0x01, rxbuf, 6, SHT_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, (0x45<<1)|0x00, settings, 2, SHT_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (0x45<<1)|0x01, rxbuf, 6, SHT_I2C_TIMEOUT);
 
   if (temp != NULL)
     *temp = calculateTemperature(rxbuf[0], rxbuf[1]);

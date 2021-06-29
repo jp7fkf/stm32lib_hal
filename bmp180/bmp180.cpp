@@ -36,8 +36,8 @@ void Bmp180::Init(){
 
 bool Bmp180::TestConnection(){
     uint8_t buf[2];
-    HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC1_MSB, 1, BMP180_I2C_TIMEOUT);
-    if (HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT) == HAL_OK)
+    HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC1_MSB, 1, BMP180_I2C_TIMEOUT);
+    if (HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT) == HAL_OK)
       return true;
     else
       return false;
@@ -46,8 +46,8 @@ bool Bmp180::TestConnection(){
 void Bmp180::LoadCalibrationParams(){
   uint8_t buf[22];
 
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC1_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 22, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC1_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 22, BMP180_I2C_TIMEOUT);
 
   ac1_ = ((int16_t)buf[0]   << 8) + buf[1];
   ac2_ = ((int16_t)buf[2]   << 8) + buf[3];
@@ -68,8 +68,8 @@ int16_t Bmp180::getAC1(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return ac1_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC1_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC1_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -77,8 +77,8 @@ int16_t Bmp180::getAC2(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return ac2_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC2_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC2_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -86,8 +86,8 @@ int16_t Bmp180::getAC3(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return ac3_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC3_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC3_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -95,8 +95,8 @@ uint16_t Bmp180::getAC4(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return ac4_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC4_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC4_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -104,8 +104,8 @@ uint16_t Bmp180::getAC5(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return ac5_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC5_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC5_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -113,8 +113,8 @@ uint16_t Bmp180::getAC6(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return ac6_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC6_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_AC6_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -122,8 +122,8 @@ int16_t Bmp180::getB1(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return b1_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_B1_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_B1_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -131,8 +131,8 @@ int16_t Bmp180::getB2(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return b2_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_B2_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_B2_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -140,8 +140,8 @@ int16_t Bmp180::getMB(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return mb_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_MB_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_MB_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -149,8 +149,8 @@ int16_t Bmp180::getMC(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return mc_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_MC_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_MC_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -158,8 +158,8 @@ int16_t Bmp180::getMD(){
   uint8_t buf[2];
   if (calibrationLoaded_)
     return md_;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_MD_MSB, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_MD_MSB, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
   return ((int16_t)buf[1] << 8) + buf[0];
 }
 
@@ -193,8 +193,8 @@ uint16_t Bmp180::getMeasureDelayMicroseconds(){
 
 uint8_t Bmp180::GetRegister(uint8_t reg){
   uint8_t buf;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, &reg, 1, BMP180_I2C_TIMEOUT);
-  HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, &buf, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, &reg, 1, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, &buf, 1, BMP180_I2C_TIMEOUT);
   return buf;
 }
 
@@ -202,7 +202,7 @@ void Bmp180::setRegister(uint8_t reg, uint8_t val){
   uint8_t buf[2];
   buf[0] = reg;
   buf[1] = val;
-  HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, buf, 2, BMP180_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, buf, 2, BMP180_I2C_TIMEOUT);
 }
 
 void Bmp180::setMode(uint8_t mode){
@@ -213,8 +213,8 @@ void Bmp180::setMode(uint8_t mode){
 uint16_t Bmp180::getRawTemperature(){
   uint8_t buf[2];
   if (mode_ == BMP180_MODE_TEMPERATURE){
-    HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_RESULT_MSB, 1, BMP180_I2C_TIMEOUT);
-    HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
+    HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_RESULT_MSB, 1, BMP180_I2C_TIMEOUT);
+    HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 2, BMP180_I2C_TIMEOUT);
     return ((uint16_t)buf[0] << 8) + buf[1];
   }
   return 0;
@@ -223,8 +223,8 @@ uint16_t Bmp180::getRawTemperature(){
 uint32_t Bmp180::getRawPressure(){
   uint8_t buf[3];
   if ((mode_ & BMP180_MODE_PRESSURE_0) == BMP180_MODE_PRESSURE_0){
-    HAL_I2C_Master_Transmit(&hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_RESULT_MSB, 1, BMP180_I2C_TIMEOUT);
-    HAL_I2C_Master_Receive(&hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 3, BMP180_I2C_TIMEOUT);
+    HAL_I2C_Master_Transmit(hi2cx_, BMP180_ADDRESS << 1, (uint8_t *)&BMP180_RA_RESULT_MSB, 1, BMP180_I2C_TIMEOUT);
+    HAL_I2C_Master_Receive(hi2cx_, (BMP180_ADDRESS << 1)|0x01, buf, 3, BMP180_I2C_TIMEOUT);
     return (((uint32_t)buf[0] << 16) + ((uint16_t)buf[1] << 8) + buf[2]) >> (8 - ((mode_ & 0xC0) >> 6));
   }
   return 0;

@@ -4,7 +4,7 @@
 - Create instance of Sht3x.
   - set HAL I2C Handler(type: I2C_HandleTypeDef) as arg.
 ```cpp
-Sht3x(I2C_HandleTypeDef hi2cx):
+Sht3x(&hi2c1):
 ```
 - Get observation data
 ```cpp
@@ -16,7 +16,7 @@ printf("temp: %3.2f, humid: %3.2f\r\n", temp, humid);
 ## Method List
 ```cpp
 // Constructor
-Sht3x(I2C_HandleTypeDef hi2cx):
+Sht3x(I2C_HandleTypeDef *hi2cx):
 
 // Public
 void GetTemperatureHumiditySingleShot(float *temp, float *humid);

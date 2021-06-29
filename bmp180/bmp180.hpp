@@ -73,7 +73,7 @@ constexpr unsigned int BMP180_I2C_TIMEOUT   = 1000; //timeout value of I2C trans
 
 class Bmp180 {
   public:
-    Bmp180(I2C_HandleTypeDef hi2cx):
+    Bmp180(I2C_HandleTypeDef *hi2cx):
         hi2cx_(hi2cx),
         calibrationLoaded_(false),
         mode_(BMP180_MODE_TEMPERATURE){}
@@ -86,7 +86,7 @@ class Bmp180 {
     float GetPressure(uint8_t oss);
     float CalcAltitude(float pressure, float seaLevelPressure);
   private:
-    I2C_HandleTypeDef hi2cx_;
+    I2C_HandleTypeDef *hi2cx_;
     bool calibrationLoaded_ = false;
     uint8_t  mode_;
     int16_t  ac1_;

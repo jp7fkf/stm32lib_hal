@@ -46,13 +46,13 @@ void St7032::Init(){
 
 void St7032::WriteInstruction(uint8_t cmd){
   uint8_t buf[] = {CNTRBIT_CO, cmd};
-  HAL_I2C_Master_Transmit(&hi2cx_, Write_Address<<1, buf, 2, ST7032_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, Write_Address<<1, buf, 2, ST7032_I2C_TIMEOUT);
   HAL_Delay(WRITE_DELAY_MS);
 }
 
 void St7032::WriteData(uint8_t data){
   uint8_t buf[] = {CNTRBIT_RS, data};
-  HAL_I2C_Master_Transmit(&hi2cx_, Write_Address<<1, buf, 2, ST7032_I2C_TIMEOUT);
+  HAL_I2C_Master_Transmit(hi2cx_, Write_Address<<1, buf, 2, ST7032_I2C_TIMEOUT);
   HAL_Delay(WRITE_DELAY_MS);
 }
 

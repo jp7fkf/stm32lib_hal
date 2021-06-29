@@ -41,11 +41,11 @@ constexpr unsigned int SHT_I2C_TIMEOUT   = 1000; //timeout value of I2C transmit
 
 class Sht3x {
   public:
-    Sht3x(I2C_HandleTypeDef hi2cx):
+    Sht3x(I2C_HandleTypeDef *hi2cx):
       hi2cx_(hi2cx){}
     void GetTemperatureHumiditySingleShot(float *temp, float *humid);
   private:
-    I2C_HandleTypeDef hi2cx_;
+    I2C_HandleTypeDef *hi2cx_;
     float calculateTemperature(uint8_t msb, uint8_t lsb);
     float calculateHumidity(uint8_t msb, uint8_t lsb);
 };

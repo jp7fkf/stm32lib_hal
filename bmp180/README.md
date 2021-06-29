@@ -4,7 +4,7 @@
 - Create instance of Bmp180
   - set HAL I2C Handler(type: I2C_HandleTypeDef) as arg.
 ```cpp
-Bmp180 bmp(hi2c1);
+Bmp180 bmp(&hi2c1);
 ```
 - Connection Test(optional)
 ```cpp
@@ -23,7 +23,7 @@ pressure = bmp.GetPressure(3);
 ## Method List
 ```cpp
 // Constructor
-Bmp180(I2C_HandleTypeDef hi2cx);
+Bmp180(I2C_HandleTypeDef *hi2cx);
 
 // Public
 void     Init();

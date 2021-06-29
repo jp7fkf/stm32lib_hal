@@ -4,7 +4,7 @@
 - Create instance of St7032.
   - set HAL I2C Handler(type: I2C_HandleTypeDef) as arg.
 ```cpp
-St7032 lcd1(hi2c1);
+St7032 lcd1(&hi2c1);
 ```
 - Initialize ST7032 LCD
 ```cpp
@@ -18,7 +18,7 @@ lcd1.Puts("Hello!");
 ## Method List
 ```cpp
 // Constructor
-St7032(I2C_HandleTypeDef hi2cx);
+St7032(I2C_HandleTypeDef *hi2cx);
 
 // Public
 void Init();

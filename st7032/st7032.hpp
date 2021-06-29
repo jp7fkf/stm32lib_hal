@@ -84,7 +84,7 @@ constexpr unsigned int ST7032_I2C_TIMEOUT       =  100; //timeout value of I2C t
 
 class St7032{
   public:
-    St7032(I2C_HandleTypeDef hi2cx):
+    St7032(I2C_HandleTypeDef *hi2cx):
       hi2cx_(hi2cx){}
     void Init();
     void Puts(const char *p);
@@ -105,7 +105,7 @@ class St7032{
     void WriteInstruction(uint8_t cmd);
     void WriteData(uint8_t data);
   private:
-    I2C_HandleTypeDef hi2cx_;
+    I2C_HandleTypeDef *hi2cx_;
     uint8_t contrast_ = 0x18;
     uint8_t display_setting_ = (DISPLAY_ON_OFF | DISPLAY_ON_OFF_D);
 };
